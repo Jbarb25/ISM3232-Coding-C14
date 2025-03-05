@@ -7,7 +7,9 @@ function createSupportTicket(customerName, issueDes, priorityLevel){
     const supportTicket = document.createElement('div'); //create a new element to represent the employee card that would be stored in the div container
     supportTicket.setAttribute('class', 'support-ticket'); //set the class of the new element as employee card
     supportTicket.setAttribute('id', 'supportTicket'); //set the id of the new element as employee card
-    
+    supportTicket.setAttribute('data-priority', priorityLevel); //set the priority level as an attribute of each ticket
+
+
     //updates the text for the card with the parameters plugged in when function called
     supportTicket.innerHTML = `
     <h3 class= "customer-name">Customer Name: ${customerName}</h3>
@@ -29,5 +31,13 @@ tickContainerByID.appendChild(supportTicket); //add element support ticket to th
 
 //Testing the functions
 createSupportTicket("Emma Dole", "Refund denied", "High")
-createSupportTicket("John Spear", "Wrong item delivered", "Moderate")
+createSupportTicket("John Spear", "Wrong item delivered", "High")
 createSupportTicket("Jake Little", "Not working", "Moderate")
+
+
+//Task 3: Converting NodeLists to Arrays for Bulk Updates
+const nodeList = document.querySelectorAll('.support-ticket[data-priority="High"]'); //create an element that stores all queries associated with support-ticket
+const arrayOfNodes = Array.from(nodeList); //for the items in the nodelist element, convert to an array
+arrayOfNodes.forEach( item => {  //for every item in the array of nodes, do the following
+        item.style.color = "#800000";  //change the text color to maroon in the printed html file
+        item.style.backgroundColor = '#FFB6C1'}); //change the background color to light pink in the printed html file
