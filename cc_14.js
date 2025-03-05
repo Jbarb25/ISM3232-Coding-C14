@@ -22,6 +22,7 @@ function createSupportTicket(customerName, issueDes, priorityLevel){
 const resolveButton = supportTicket.querySelector('.resolve-ticket');
 
 resolveButton.addEventListener('click', (event) => {
+       //Task 4: removeChild and stopPropagation()
   event.stopPropagation(); //clicking the resolve button will not bubble up to the ticket container
   tickContainerByID.removeChild(supportTicket); //remove the selected support ticket
 });
@@ -41,3 +42,14 @@ const arrayOfNodes = Array.from(nodeList); //for the items in the nodelist eleme
 arrayOfNodes.forEach( item => {  //for every item in the array of nodes, do the following
         item.style.color = "#800000";  //change the text color to maroon in the printed html file
         item.style.backgroundColor = '#FFB6C1'}); //change the background color to light pink in the printed html file
+
+
+//Task 4: Implementing Ticket Resolution with Event Bubbling
+   //Refer to Task 2 for attaching a 'click' eventListener to the "resolve" button that removes its parent ticket using removeChild
+   //Refer to Task 2 for stopPropagation() in the "resolve" button to prevent bubbling
+
+   const ticketContainer = document.getElementById('ticketContainer'); //pull the parent container for the customer section by the id
+    
+   ticketContainer.addEventListener('click', () => { 
+       console.log(`Ticket clicked`);});  //add an event listner so that when any ticket is clicked, it logs the message
+
